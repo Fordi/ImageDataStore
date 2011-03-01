@@ -57,12 +57,16 @@ class JpegDataStore extends ImageDataStore {
 	}
 	function writeData($data) {
 		$this->open();
-		$dec = $this->packData($data);
+		
 		$dataBlock = array();
-		$len = strlen($dec);
-		for ($i=0; $i<$len; $i+=65528) {
-			$ct = min(65528, $len-$i);
-			$dataBlock[]="\xFF\xFE".pack("n*", $ct+7).'DATA:'.substr($dec,$i, $ct);
+		
+		if (!empty($data)) {
+			$dec = $this->packData($data);
+			$len = strlen($dec);
+			for ($i=0; $i<$len; $i+=65528) {
+				$ct = min(65528, $len-$i);
+				$dataBlock[]="\xFF\xFE".pack("n*", $ct+7).'DATA:'.substr($dec,$i, $ct);
+			}
 		}
 
 		$dataBlock = join('', $dataBlock);
@@ -77,7 +81,6 @@ class JpegDataStore extends ImageDataStore {
 		
 		//Strip existing comments
 		for ($i=0; $i<count($comment); $i++) {
-			var_dump($comment);
 			$this->copy($newFile, $comment[$i]->pos - $this->tell());
 			$this->seek($comment[$i]->len, SEEK_CUR);
 		}

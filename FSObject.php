@@ -60,12 +60,14 @@ class FSObject {
 		return gzcompress($data, 9);
 	}
 	function decompress($data) {
+		if (empty($data)) return '';
 		return gzuncompress($data);
 	}
 	function serialize($obj) {
 		return serialize($obj);
 	}
 	function unserialize($obj) {
+		if (empty($obj)) return null;
 		return unserialize($obj);
 	}
 	function packData($obj) {
