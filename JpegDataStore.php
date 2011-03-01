@@ -1,5 +1,4 @@
 <?php
-require_once('ImageDataStore.php');
 class JpegDataStore extends ImageDataStore {
 	private function block($dataNeeded=false, $large=false) {
 		$data = $this->readInt()-2;

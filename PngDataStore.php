@@ -1,5 +1,4 @@
 <?php
-require_once('ImageDataStore.php');
 class PngDataStore extends ImageDataStore {
 	private function isPNG() {
 		$this->seek();

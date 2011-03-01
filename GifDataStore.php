@@ -1,5 +1,4 @@
 <?php
-require_once('ImageDataStore.php');
 class GifDataStore extends ImageDataStore {
 	private function isGIF() {
 		$this->seek(0);

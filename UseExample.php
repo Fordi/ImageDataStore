@@ -1,4 +1,5 @@
 <?php
+require_once('ImageDataStore.php');
 $ds = new JpegDataStore('gallery-image.jpg');
 $ds->writeData((object)array(
 	'comment'=>'You know I like the way this image looks',
