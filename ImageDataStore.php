@@ -1,6 +1,7 @@
 <?php
-define('IDS_ROOT', dirname(__FILE__).'/'.);
+define('IDS_ROOT', dirname(__FILE__).'/');
 require_once(IDS_ROOT.'FSObject.php');
+require_once(IDS_ROOT.'IDataStore.php');
 abstract class ImageDataStore extends FSObject implements IDataStore {
 	public static function from($file) {
 		$info = getimagesize($file);
